@@ -78,7 +78,7 @@ export function addGrade(studentID: StudentID, course: Course, grade: number): v
   try {
     allTranscripts[tIndex] = addGradeToTranscript(theTranscript, course, grade);
   } catch (e) {
-    throw new Error(`student ${studentID} already has a grade in course ${course}`);
+    throw new Error(`student ${studentID} already has a grade in course ${course}. Error: ${e.message || e}`);
   }
 }
 
