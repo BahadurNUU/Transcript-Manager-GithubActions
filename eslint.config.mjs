@@ -2,16 +2,25 @@
 
 
 
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import { defineConfig } from "eslint/config";
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
 
-export default [
-  eslint.configs.recommended,
-  tseslint.configs.recommended,
+export default defineConfig([
   {
     ignores: [
-      'jest.config.cjs',
-      '.prettierrc.cjs',
+      "jest.config.cjs",
+      ".prettierrc.cjs",
     ],
   },
-];
+  {
+    files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
+    extends: ["js/recommended"],
+    plugins: { js },
+  },
+  {
+    files: ["**/*.ts"],
+    extends: [tseslint.configs.recommended],
+    plugins: { "@typescript-eslint": tseslint },
+  },
+]);
