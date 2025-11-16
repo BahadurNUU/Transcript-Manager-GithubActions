@@ -21,6 +21,5 @@ export default defineConfig([
   {
     files: ["**/*.ts"],
     extends: [tseslint.configs.recommended],
-    plugins: { "@typescript-eslint": tseslint },
   },
 ]);
